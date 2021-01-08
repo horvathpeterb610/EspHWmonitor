@@ -425,10 +425,10 @@ void printWeatherIcon(int id) {
   case 503: drawBmp("/storm.bmp",240, 160); break;
   case 504: drawBmp("/storm.bmp",240, 160); break;
   case 511: drawBmp("/rain2.bmp",240, 160); break;
-  case 520: drawBmp("/rain.bmp",240, 160); break;
-  case 521: drawBmp("/rain.bmp",240, 160); break;
-  case 522: drawBmp("/rain.bmp",240, 160); break;
-  case 531: drawBmp("/rain.bmp",240, 160); break;
+  case 520: drawBmp("/rain2.bmp",240, 160); break;
+  case 521: drawBmp("/rain2.bmp",240, 160); break;
+  case 522: drawBmp("/rain2.bmp",240, 160); break;
+  case 531: drawBmp("/rain2.bmp",240, 160); break;
 
   case 600: drawBmp("/snow4.bmp",240, 160); break;
   case 601: drawBmp("/snow.bmp",240, 160); break;
@@ -438,6 +438,71 @@ void printWeatherIcon(int id) {
   case 615: drawBmp("/snow.bmp",240, 160); break;
   case 616: drawBmp("/snow.bmp",240, 160); break;
   case 620: drawBmp("/snow4.bmp",240, 160); break;
+  case 621: drawBmp("/snow.bmp",240, 160); break;
+  case 622: drawBmp("/snow.bmp",240, 160); break;
+
+  case 701: drawBmp("/fog.bmp",240, 160); break;
+  case 711: drawBmp("/fog.bmp",240, 160); break;
+  case 721: drawBmp("/fog.bmp",240, 160); break;
+  case 731: drawBmp("/fog.bmp",240, 160); break;
+  case 741: drawBmp("/fog.bmp",240, 160); break;
+  case 751: drawBmp("/fog.bmp",240, 160); break;
+  case 761: drawBmp("/fog.bmp",240, 160); break;
+  case 762: drawBmp("/fog.bmp",240, 160); break;
+  case 771: drawBmp("/fog.bmp",240, 160); break;
+  case 781: drawBmp("/fog.bmp",240, 160); break;
+  default:break; 
+  }
+}
+
+void printWeatherIconNight(int id) {
+ switch(id) {
+  case 800: drawBmp("/sun2_night.bmp",240, 160); break;
+  case 801: drawBmp("/sunny_night.bmp",240, 160); break;
+  case 802: drawBmp("/sunny_night.bmp",240, 160); break;
+  case 803: drawBmp("/cloud.bmp",240, 160); break;
+  case 804: drawBmp("/cloud.bmp",240, 160); break;
+  
+  case 200: drawBmp("/storm.bmp",240, 160); break;
+  case 201: drawBmp("/storm.bmp",240, 160); break;
+  case 202: drawBmp("/storm.bmp",240, 160); break;
+  case 210: drawBmp("/storm.bmp",240, 160); break;
+  case 211: drawBmp("/storm.bmp",240, 160); break;
+  case 212: drawBmp("/storm.bmp",240, 160); break;
+  case 221: drawBmp("/storm.bmp",240, 160); break;
+  case 230: drawBmp("/storm.bmp",240, 160); break;
+  case 231: drawBmp("/storm.bmp",240, 160); break;
+  case 232: drawBmp("/storm.bmp",240, 160); break;
+
+  case 300: drawBmp("/rain2.bmp",240, 160); break;
+  case 301: drawBmp("/rain2.bmp",240, 160); break;
+  case 302: drawBmp("/rain2.bmp",240, 160); break;
+  case 310: drawBmp("/rain2.bmp",240, 160); break;
+  case 311: drawBmp("/rain2.bmp",240, 160); break;
+  case 312: drawBmp("/rain2.bmp",240, 160); break;
+  case 313: drawBmp("/rain2.bmp",240, 160); break;
+  case 314: drawBmp("/rain2.bmp",240, 160); break;
+  case 321: drawBmp("/rain2.bmp",240, 160); break;
+
+  case 500: drawBmp("/moderate_rain_night.bmp",240, 160); break;
+  case 501: drawBmp("/moderate_rain_night.bmp",240, 160); break;
+  case 502: drawBmp("/moderate_rain_night.bmp",240, 160); break;
+  case 503: drawBmp("/storm.bmp",240, 160); break;
+  case 504: drawBmp("/storm.bmp",240, 160); break;
+  case 511: drawBmp("/rain2.bmp",240, 160); break;
+  case 520: drawBmp("/rain2.bmp",240, 160); break;
+  case 521: drawBmp("/rain2.bmp",240, 160); break;
+  case 522: drawBmp("/rain2.bmp",240, 160); break;
+  case 531: drawBmp("/rain2.bmp",240, 160); break;
+
+  case 600: drawBmp("/snow4_night.bmp",240, 160); break;
+  case 601: drawBmp("/snow.bmp",240, 160); break;
+  case 602: drawBmp("/snow.bmp",240, 160); break;
+  case 611: drawBmp("/snow.bmp",240, 160); break;
+  case 612: drawBmp("/snow4_night.bmp",240, 160); break;
+  case 615: drawBmp("/snow.bmp",240, 160); break;
+  case 616: drawBmp("/snow.bmp",240, 160); break;
+  case 620: drawBmp("/snow4_night.bmp",240, 160); break;
   case 621: drawBmp("/snow.bmp",240, 160); break;
   case 622: drawBmp("/snow.bmp",240, 160); break;
 
@@ -476,8 +541,20 @@ void getWeather(){
   tft.setCursor(20, 260, 4);
   tft.print(data.description.c_str());
   tft.print("         ");
+  //Serial.print(data.weatherId);
   
-  printWeatherIcon(data.weatherId);
+  int sunrise = ((data.sunrise  % 86400L) / 3600) % 24;
+  int sunset = ((data.sunset  % 86400L) / 3600) % 24;
+  
+  if(timeClient.getHours() > sunset ||  timeClient.getHours() < sunrise ){
+      printWeatherIconNight(data.weatherId);
+
+  }else
+  {
+    printWeatherIcon(data.weatherId);
+  }
+  
+  
   
   
   

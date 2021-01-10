@@ -15,3 +15,5 @@ Display CS to NodeMCU pin D8<br />
 Display GND to NodeMCU pin GND (0V)<br />
 Display VCC to NodeMCU 3.3V
 
+![alt text](/img1.jpg)
+![alt text](/img2.jpg)

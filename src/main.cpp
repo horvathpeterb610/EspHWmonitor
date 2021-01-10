@@ -24,12 +24,11 @@
 #include <FS.h>
 #include <LittleFS.h>
 #include "alert.h"
-#define LOAD_GFXFF
 #include "OpenWeatherMapOneCall.h"
 
 
 
-
+//#define LOAD_GFXFF
 
 
 //ringmeter
@@ -41,6 +40,7 @@
 #define RED2GREEN 5
 #define TFT_GREY 0x2104 // Dark grey 16 bit colour
 #define BUTTON_PIN D1
+
 
 EasyButton button(BUTTON_PIN);
 
@@ -112,7 +112,6 @@ void setup() {
   tft.init();
   tft.fillScreen(TFT_BLACK);
   tft.setRotation(1);
-  
   tft.setTextColor(TFT_WHITE,TFT_BLACK);
   tft.setCursor(60, 70, 4);
   tft.print("Waiting for WiFi");
@@ -401,130 +400,130 @@ void drawBmp(const char *filename, int16_t x, int16_t y) {
 
 void printWeatherIcon(int id) {
  switch(id) {
-  case 800: drawBmp("/sun2.bmp",280, 100); break;
-  case 801: drawBmp("/sunny.bmp",280, 100); break;
-  case 802: drawBmp("/sunny.bmp",280, 100); break;
+  case 800: drawBmp("/sun2.bmp",190, 55); break;
+  case 801: drawBmp("/sunny.bmp",190, 55); break;
+  case 802: drawBmp("/sunny.bmp",190, 55); break;
   case 803: drawBmp("/cloud.bmp",190, 55); break;
   case 804: drawBmp("/cloud.bmp",190, 55); break;
   
-  case 200: drawBmp("/storm.bmp",280, 100); break;
-  case 201: drawBmp("/storm.bmp",280, 100); break;
-  case 202: drawBmp("/storm.bmp",280, 100); break;
-  case 210: drawBmp("/storm.bmp",280, 100); break;
-  case 211: drawBmp("/storm.bmp",280, 100); break;
-  case 212: drawBmp("/storm.bmp",280, 100); break;
-  case 221: drawBmp("/storm.bmp",280, 100); break;
-  case 230: drawBmp("/storm.bmp",280, 100); break;
-  case 231: drawBmp("/storm.bmp",280, 100); break;
-  case 232: drawBmp("/storm.bmp",280, 100); break;
+  case 200: drawBmp("/storm.bmp",190, 55); break;
+  case 201: drawBmp("/storm.bmp",190, 55); break;
+  case 202: drawBmp("/storm.bmp",190, 55); break;
+  case 210: drawBmp("/storm.bmp",190, 55); break;
+  case 211: drawBmp("/storm.bmp",190, 55); break;
+  case 212: drawBmp("/storm.bmp",190, 55); break;
+  case 221: drawBmp("/storm.bmp",190, 55); break;
+  case 230: drawBmp("/storm.bmp",190, 55); break;
+  case 231: drawBmp("/storm.bmp",190, 55); break;
+  case 232: drawBmp("/storm.bmp",190, 55); break;
 
-  case 300: drawBmp("/rain2.bmp",280, 100); break;
-  case 301: drawBmp("/rain2.bmp",280, 100); break;
-  case 302: drawBmp("/rain2.bmp",280, 100); break;
-  case 310: drawBmp("/rain2.bmp",280, 100); break;
-  case 311: drawBmp("/rain2.bmp",280, 100); break;
-  case 312: drawBmp("/rain2.bmp",280, 100); break;
-  case 313: drawBmp("/rain2.bmp",280, 100); break;
-  case 314: drawBmp("/rain2.bmp",280, 100); break;
-  case 321: drawBmp("/rain2.bmp",280, 100); break;
+  case 300: drawBmp("/rain2.bmp",190, 55); break;
+  case 301: drawBmp("/rain2.bmp",190, 55); break;
+  case 302: drawBmp("/rain2.bmp",190, 55); break;
+  case 310: drawBmp("/rain2.bmp",190, 55); break;
+  case 311: drawBmp("/rain2.bmp",190, 55); break;
+  case 312: drawBmp("/rain2.bmp",190, 55); break;
+  case 313: drawBmp("/rain2.bmp",190, 55); break;
+  case 314: drawBmp("/rain2.bmp",190, 55); break;
+  case 321: drawBmp("/rain2.bmp",190, 55); break;
 
-  case 500: drawBmp("/moderate_rain.bmp",280, 100); break;
-  case 501: drawBmp("/moderate_rain.bmp",280, 100); break;
-  case 502: drawBmp("/moderate_rain.bmp",280, 100); break;
-  case 503: drawBmp("/storm.bmp",280, 100); break;
-  case 504: drawBmp("/storm.bmp",280, 100); break;
-  case 511: drawBmp("/rain2.bmp",280, 100); break;
-  case 520: drawBmp("/rain2.bmp",280, 100); break;
-  case 521: drawBmp("/rain2.bmp",280, 100); break;
-  case 522: drawBmp("/rain2.bmp",280, 100); break;
-  case 531: drawBmp("/rain2.bmp",280, 100); break;
+  case 500: drawBmp("/moderate_rain.bmp",190, 55); break;
+  case 501: drawBmp("/moderate_rain.bmp",190, 55); break;
+  case 502: drawBmp("/moderate_rain.bmp",190, 55); break;
+  case 503: drawBmp("/storm.bmp",190, 55); break;
+  case 504: drawBmp("/storm.bmp",190, 55); break;
+  case 511: drawBmp("/rain2.bmp",190, 55); break;
+  case 520: drawBmp("/rain2.bmp",190, 55); break;
+  case 521: drawBmp("/rain2.bmp",190, 55); break;
+  case 522: drawBmp("/rain2.bmp",190, 55); break;
+  case 531: drawBmp("/rain2.bmp",190, 55); break;
 
-  case 600: drawBmp("/snow4.bmp",280, 100); break;
-  case 601: drawBmp("/snow.bmp",280, 100); break;
-  case 602: drawBmp("/snow.bmp",280, 100); break;
-  case 611: drawBmp("/snow.bmp",280, 100); break;
-  case 612: drawBmp("/snow4.bmp",280, 100); break;
-  case 615: drawBmp("/snow.bmp",280, 100); break;
-  case 616: drawBmp("/snow.bmp",280, 100); break;
-  case 620: drawBmp("/snow4.bmp",280, 100); break;
-  case 621: drawBmp("/snow.bmp",280, 100); break;
-  case 622: drawBmp("/snow.bmp",280, 100); break;
+  case 600: drawBmp("/snow4.bmp",190, 55); break;
+  case 601: drawBmp("/snow.bmp",190, 55); break;
+  case 602: drawBmp("/snow.bmp",190, 55); break;
+  case 611: drawBmp("/snow.bmp",190, 55); break;
+  case 612: drawBmp("/snow4.bmp",190, 55); break;
+  case 615: drawBmp("/snow.bmp",190, 55); break;
+  case 616: drawBmp("/snow.bmp",190, 55); break;
+  case 620: drawBmp("/snow4.bmp",190, 55); break;
+  case 621: drawBmp("/snow.bmp",190, 55); break;
+  case 622: drawBmp("/snow.bmp",190, 55); break;
 
-  case 701: drawBmp("/fog.bmp",280, 100); break;
-  case 711: drawBmp("/fog.bmp",280, 100); break;
-  case 721: drawBmp("/fog.bmp",280, 100); break;
-  case 731: drawBmp("/fog.bmp",280, 100); break;
-  case 741: drawBmp("/fog.bmp",280, 100); break;
-  case 751: drawBmp("/fog.bmp",280, 100); break;
-  case 761: drawBmp("/fog.bmp",280, 100); break;
-  case 762: drawBmp("/fog.bmp",280, 100); break;
-  case 771: drawBmp("/fog.bmp",280, 100); break;
-  case 781: drawBmp("/fog.bmp",280, 100); break;
+  case 701: drawBmp("/fog.bmp",190, 55); break;
+  case 711: drawBmp("/fog.bmp",190, 55); break;
+  case 721: drawBmp("/fog.bmp",190, 55); break;
+  case 731: drawBmp("/fog.bmp",190, 55); break;
+  case 741: drawBmp("/fog.bmp",190, 55); break;
+  case 751: drawBmp("/fog.bmp",190, 55); break;
+  case 761: drawBmp("/fog.bmp",190, 55); break;
+  case 762: drawBmp("/fog.bmp",190, 55); break;
+  case 771: drawBmp("/fog.bmp",190, 55); break;
+  case 781: drawBmp("/fog.bmp",190, 55); break;
   default:break; 
   }
 }
 
 void printWeatherIconNight(int id) {
  switch(id) {
-  case 800: drawBmp("/sun2_night.bmp",280, 100); break;
-  case 801: drawBmp("/sunny_night.bmp",280, 100); break;
-  case 802: drawBmp("/sunny_night.bmp",280, 100); break;
+  case 800: drawBmp("/sun2_night.bmp",190, 55); break;
+  case 801: drawBmp("/sunny_night.bmp",190, 55); break;
+  case 802: drawBmp("/sunny_night.bmp",190, 55); break;
   case 803: drawBmp("/cloud.bmp",190, 55); break;
   case 804: drawBmp("/cloud.bmp",190, 55); break;
   
-  case 200: drawBmp("/storm.bmp",280, 100); break;
-  case 201: drawBmp("/storm.bmp",280, 100); break;
-  case 202: drawBmp("/storm.bmp",280, 100); break;
-  case 210: drawBmp("/storm.bmp",280, 100); break;
-  case 211: drawBmp("/storm.bmp",280, 100); break;
-  case 212: drawBmp("/storm.bmp",280, 100); break;
-  case 221: drawBmp("/storm.bmp",280, 100); break;
-  case 230: drawBmp("/storm.bmp",280, 100); break;
-  case 231: drawBmp("/storm.bmp",280, 100); break;
-  case 232: drawBmp("/storm.bmp",280, 100); break;
+  case 200: drawBmp("/storm.bmp",190, 55); break;
+  case 201: drawBmp("/storm.bmp",190, 55); break;
+  case 202: drawBmp("/storm.bmp",190, 55); break;
+  case 210: drawBmp("/storm.bmp",190, 55); break;
+  case 211: drawBmp("/storm.bmp",190, 55); break;
+  case 212: drawBmp("/storm.bmp",190, 55); break;
+  case 221: drawBmp("/storm.bmp",190, 55); break;
+  case 230: drawBmp("/storm.bmp",190, 55); break;
+  case 231: drawBmp("/storm.bmp",190, 55); break;
+  case 232: drawBmp("/storm.bmp",190, 55); break;
 
-  case 300: drawBmp("/rain2.bmp",280, 100); break;
-  case 301: drawBmp("/rain2.bmp",280, 100); break;
-  case 302: drawBmp("/rain2.bmp",280, 100); break;
-  case 310: drawBmp("/rain2.bmp",280, 100); break;
-  case 311: drawBmp("/rain2.bmp",280, 100); break;
-  case 312: drawBmp("/rain2.bmp",280, 100); break;
-  case 313: drawBmp("/rain2.bmp",280, 100); break;
-  case 314: drawBmp("/rain2.bmp",280, 100); break;
-  case 321: drawBmp("/rain2.bmp",280, 100); break;
+  case 300: drawBmp("/rain2.bmp",190, 55); break;
+  case 301: drawBmp("/rain2.bmp",190, 55); break;
+  case 302: drawBmp("/rain2.bmp",190, 55); break;
+  case 310: drawBmp("/rain2.bmp",190, 55); break;
+  case 311: drawBmp("/rain2.bmp",190, 55); break;
+  case 312: drawBmp("/rain2.bmp",190, 55); break;
+  case 313: drawBmp("/rain2.bmp",190, 55); break;
+  case 314: drawBmp("/rain2.bmp",190, 55); break;
+  case 321: drawBmp("/rain2.bmp",190, 55); break;
 
-  case 500: drawBmp("/moderate_rain_night.bmp",280, 100); break;
-  case 501: drawBmp("/moderate_rain_night.bmp",280, 100); break;
-  case 502: drawBmp("/moderate_rain_night.bmp",280, 100); break;
-  case 503: drawBmp("/storm.bmp",280, 100); break;
-  case 504: drawBmp("/storm.bmp",280, 100); break;
-  case 511: drawBmp("/rain2.bmp",280, 100); break;
-  case 520: drawBmp("/rain2.bmp",280, 100); break;
-  case 521: drawBmp("/rain2.bmp",280, 100); break;
-  case 522: drawBmp("/rain2.bmp",280, 100); break;
-  case 531: drawBmp("/rain2.bmp",280, 100); break;
+  case 500: drawBmp("/moderate_rain_night.bmp",190, 55); break;
+  case 501: drawBmp("/moderate_rain_night.bmp",190, 55); break;
+  case 502: drawBmp("/moderate_rain_night.bmp",190, 55); break;
+  case 503: drawBmp("/storm.bmp",190, 55); break;
+  case 504: drawBmp("/storm.bmp",190, 55); break;
+  case 511: drawBmp("/rain2.bmp",190, 55); break;
+  case 520: drawBmp("/rain2.bmp",190, 55); break;
+  case 521: drawBmp("/rain2.bmp",190, 55); break;
+  case 522: drawBmp("/rain2.bmp",190, 55); break;
+  case 531: drawBmp("/rain2.bmp",190, 55); break;
 
-  case 600: drawBmp("/snow4_night.bmp",280, 100); break;
-  case 601: drawBmp("/snow.bmp",280, 100); break;
-  case 602: drawBmp("/snow.bmp",280, 100); break;
-  case 611: drawBmp("/snow.bmp",280, 100); break;
-  case 612: drawBmp("/snow4_night.bmp",280, 100); break;
-  case 615: drawBmp("/snow.bmp",280, 100); break;
-  case 616: drawBmp("/snow.bmp",280, 100); break;
-  case 620: drawBmp("/snow4_night.bmp",280, 100); break;
-  case 621: drawBmp("/snow.bmp",280, 100); break;
-  case 622: drawBmp("/snow.bmp",280, 100); break;
+  case 600: drawBmp("/snow4_night.bmp",190, 55); break;
+  case 601: drawBmp("/snow.bmp",190, 55); break;
+  case 602: drawBmp("/snow.bmp",190, 55); break;
+  case 611: drawBmp("/snow.bmp",190, 55); break;
+  case 612: drawBmp("/snow4_night.bmp",190, 55); break;
+  case 615: drawBmp("/snow.bmp",190, 55); break;
+  case 616: drawBmp("/snow.bmp",190, 55); break;
+  case 620: drawBmp("/snow4_night.bmp",190, 55); break;
+  case 621: drawBmp("/snow.bmp",190, 55); break;
+  case 622: drawBmp("/snow.bmp",190, 55); break;
 
-  case 701: drawBmp("/fog.bmp",280, 100); break;
-  case 711: drawBmp("/fog.bmp",280, 100); break;
-  case 721: drawBmp("/fog.bmp",280, 100); break;
-  case 731: drawBmp("/fog.bmp",280, 100); break;
-  case 741: drawBmp("/fog.bmp",280, 100); break;
-  case 751: drawBmp("/fog.bmp",280, 100); break;
-  case 761: drawBmp("/fog.bmp",280, 100); break;
-  case 762: drawBmp("/fog.bmp",280, 100); break;
-  case 771: drawBmp("/fog.bmp",280, 100); break;
-  case 781: drawBmp("/fog.bmp",280, 100); break;
+  case 701: drawBmp("/fog.bmp",190, 55); break;
+  case 711: drawBmp("/fog.bmp",190, 55); break;
+  case 721: drawBmp("/fog.bmp",190, 55); break;
+  case 731: drawBmp("/fog.bmp",190, 55); break;
+  case 741: drawBmp("/fog.bmp",190, 55); break;
+  case 751: drawBmp("/fog.bmp",190, 55); break;
+  case 761: drawBmp("/fog.bmp",190, 55); break;
+  case 762: drawBmp("/fog.bmp",190, 55); break;
+  case 771: drawBmp("/fog.bmp",190, 55); break;
+  case 781: drawBmp("/fog.bmp",190, 55); break;
   default:break; 
   }
 }

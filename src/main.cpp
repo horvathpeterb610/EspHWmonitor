@@ -749,6 +749,7 @@ void forecast(){
         
         String foreDay0 = weekDays[((openWeatherMapOneCallData.daily[1].dt / 86400L) + 4 ) % 7];
         tft.println(foreDay0);
+        tft.print("       ");
         printWeatherIconForeCast0(openWeatherMapOneCallData.daily[1].weatherId);
         tft.setCursor(45, 280, 2);
         tft.print((int)openWeatherMapOneCallData.daily[1].tempMin);
@@ -759,6 +760,7 @@ void forecast(){
         tft.setCursor(230, 190, 2);
         String foreDay1 = weekDays[((openWeatherMapOneCallData.daily[2].dt / 86400L) + 4 ) % 7];
         tft.println(foreDay1);
+        tft.print("       ");
         printWeatherIconForeCast1(openWeatherMapOneCallData.daily[2].weatherId);
         tft.setCursor(205, 280, 2);
         tft.print((int)openWeatherMapOneCallData.daily[2].tempMin);
@@ -769,6 +771,7 @@ void forecast(){
         tft.setCursor(380, 190, 2);
         String foreDay2 = weekDays[((openWeatherMapOneCallData.daily[3].dt / 86400L) + 4 ) % 7];
         tft.println(foreDay2);
+        tft.print("       ");
         printWeatherIconForeCast2(openWeatherMapOneCallData.daily[3].weatherId);
         tft.setCursor(365, 280, 2);
         tft.print((int)openWeatherMapOneCallData.daily[3].tempMin);

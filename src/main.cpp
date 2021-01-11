@@ -1967,7 +1967,7 @@ JsonObject Children_0_Children_6 = Children_0_Children[6];
 
   
   String currentDate = String(currentYear) + "." + cMonth + "." + mDay;
-    timeClient.forceUpdate();
+  
   tft.setCursor(140, 0, 2);
   tft.setTextColor(TFT_WHITE,TFT_BLACK);  tft.setTextSize(1);
   tft.print(timeClient.getFormattedTime());
@@ -2006,7 +2006,7 @@ JsonObject Children_0_Children_6 = Children_0_Children[6];
         hwClear = true;
       }
     
-  timeClient.forceUpdate();  
+   
   tft.setCursor(10, 10, 6);
   tft.setTextColor(TFT_WHITE,TFT_BLACK);  tft.setTextSize(1);
   tft.print(timeClient.getFormattedTime());

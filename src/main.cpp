@@ -65,7 +65,8 @@ boolean IS_METRIC = true;
   float OPEN_WEATHER_MAP_LOCATTION_LAT = 47.498; // Bp
   float OPEN_WEATHER_MAP_LOCATTION_LON = 19.0399; // Bp
 
-
+bool startWeather = true;
+bool startForeCast = true;
 bool hwClear = true;
 bool wClear = true;
 TFT_eSPI tft = TFT_eSPI();
@@ -75,8 +76,12 @@ WiFiManager wifiManager;
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, 3600);
 
-const long interval = 36000;
+const long interval = 1500000;
 unsigned long previousMillis = 0;
+
+const long interval2 = 3600000;
+unsigned long previousMillis2 = 0;
+
 
 String weekDays[7]={"Vasarnap", "Hetfo", "Kedd", "Szerda", "Csutortok", "Pentek", "Szombat"};
 
@@ -724,21 +729,20 @@ void printWeatherIconForeCast2(int id) {
 }
 
 void forecast(){
+  unsigned long currentMillis2 = millis();
+  if (currentMillis2 - previousMillis2 >= interval2 || startForeCast == true) {
+    previousMillis2 = currentMillis2;
   
-  //OpenWeatherMapForecastData data2[MAX_FORECASTS];
-    //client2.setMetric(IS_METRIC);
-    //client2.setLanguage(OPEN_WEATHER_MAP_LANGUAGE);
-    //uint8_t allowedHours[] = {6,7,17,18};
-    //client2.setAllowedHours(allowedHours, 1);
+  
     OpenWeatherMapOneCall *oneCallClient = new OpenWeatherMapOneCall();
 
     oneCallClient->setMetric(IS_METRIC);
   oneCallClient->setLanguage(OPEN_WEATHER_MAP_LANGUAGE);
 
-  long executionStart = millis();
+  //long executionStart = millis();
   oneCallClient->update(&openWeatherMapOneCallData, OPEN_WEATHER_MAP_APP_ID, OPEN_WEATHER_MAP_LOCATTION_LAT, OPEN_WEATHER_MAP_LOCATTION_LON);
   delete oneCallClient;
-  oneCallClient = nullptr;
+  //oneCallClient = nullptr;
 
     //uint8_t foundForecasts = client2.updateForecastsById(data2, OPEN_WEATHER_MAP_APP_ID, OPEN_WEATHER_MAP_LOCATION_ID, MAX_FORECASTS);
     //time_t time;
@@ -779,11 +783,11 @@ void forecast(){
         tft.print("/"); 
         tft.print((int)openWeatherMapOneCallData.daily[3].tempMax);
         tft.print(" `C    "); 
-        
+        Serial.print("forecast futott");
       }
     }
-
-
+  }
+  startForeCast = false;
 
 } 
 
@@ -792,7 +796,7 @@ void forecast(){
   
 void getWeather(){
   unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
+  if (currentMillis - previousMillis >= interval || startWeather == true) {
     previousMillis = currentMillis;
   OpenWeatherMapCurrentData data;
   client.setLanguage(OPEN_WEATHER_MAP_LANGUAGE);
@@ -834,12 +838,12 @@ void getWeather(){
     printWeatherIcon(data.weatherId);
     
   }
-  
+  Serial.print("currentWeather futott");
   forecast();
   
   
   
-
+startWeather = false;
 }
 }
  
